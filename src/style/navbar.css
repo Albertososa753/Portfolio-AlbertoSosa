@@ -1,0 +1,190 @@
+/* Variables CSS para colores */
+:root {
+  --navbar-bg: #1a1a2e; /* Dark blue/purple */
+  --text-color: #e0e0e0; /* Light gray */
+  --accent-color: #00bbf9; /* Vibrant blue/cyan */
+  --hover-accent-color: #ffc300; /* Gold/yellow */
+  --mobile-menu-bg: #2e2e4a; /* Slightly lighter dark blue/purple */
+}
+
+.navbar {
+  height: 5rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  position: sticky;
+  background: var(--navbar-bg);
+  top: 0;
+  z-index: 3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.logo {
+  object-fit: cover;
+  height: 3.5rem;
+  width: 4.5rem;
+  margin-bottom: auto;
+}
+
+.desktopMenu {
+  display: flex;
+  align-items: center;
+}
+
+.desktopMenuListItem {
+  margin: 0 1.2rem;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  position: relative; /* Para el efecto de subrayado */
+  transition: color 0.3s ease-in-out;
+}
+
+.desktopMenuListItem::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent-color);
+  bottom: -5px; /* Ajusta la posición del subrayado */
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.desktopMenuListItem:hover::after,
+.desktopMenuListItem.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.desktopMenuListItem:hover {
+  color: var(--accent-color);
+}
+
+.desktopMenuBtn {
+  background: var(--accent-color);
+  color: var(--navbar-bg); /* Color de texto oscuro para contraste */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.desktopMenuBtn:hover {
+  background: var(--hover-accent-color);
+  color: var(--navbar-bg);
+}
+
+.desktopMenuImg {
+  object-fit: cover;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.mobMenu {
+  display: none; /* Oculto por defecto en desktop */
+  object-fit: cover;
+  height: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobMenu:hover {
+  transform: scale(1.1);
+}
+
+.navMenu {
+  position: absolute;
+  top: 4.5rem; /* Ajusta la posición para que no se superponga con la navbar */
+  right: 2rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  height: fit-content;
+  min-width: 15rem;
+  background: var(--mobile-menu-bg);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0; /* Oculto por defecto, se controla con JS */
+  transform: translateY(-10px); /* Pequeño desplazamiento para la animación */
+  pointer-events: none; /* Deshabilita interacciones cuando está oculto */
+}
+
+.navMenu[style*="display: flex"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.listItem {
+  color: var(--text-color);
+  padding: 0.75rem 1.5rem;
+  margin: 0.25rem 0;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.listItem:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al pasar el ratón */
+  color: var(--accent-color);
+}
+
+.listItem.active {
+  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+  .desktopMenu {
+    display: none;
+  }
+  .desktopMenuBtn {
+    display: none;
+  }
+  .mobMenu {
+    display: flex; /* Visible en pantallas pequeñas */
+  }
+  .navbar {
+    padding: 1rem 1rem; /* Menos padding en móviles */
+  }
+  .navMenu {
+    right: 1rem; /* Ajusta la posición en móviles */
+    min-width: unset;
+    width: calc(100% - 2rem); /* Ocupa casi todo el ancho */
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar {
+    height: 6rem;
+  }
+  .desktopMenuListItem {
+    margin: 0 1.5rem;
+    font-size: 1.2rem;
+  }
+  .desktopMenuBtn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+  }
+}

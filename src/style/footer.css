@@ -1,0 +1,47 @@
+/* Importar variables de color de navbar.css si no están en globals.css */
+/* @import './navbar.css'; */ /* Descomentar si las variables no son globales */
+
+/* Variables CSS para colores (si no se importan globalmente) */
+:root {
+  --navbar-bg: #1a1a2e;
+  --text-color: #e0e0e0;
+  --accent-color: #00bbf9;
+  --hover-accent-color: #ffc300;
+  --footer-bg: #121220; /* Un color aún más oscuro para el pie de página */
+  --footer-text-color: #b0b0b0; /* Un gris más suave para el texto */
+}
+
+.main-footer {
+  width: 100%;
+  padding: 2rem 1rem; /* Padding vertical y horizontal */
+  background-color: var(--footer-bg);
+  color: var(--footer-text-color);
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Borde superior sutil */
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Sombra superior para profundidad */
+  margin-top: 4rem; /* Espacio para separar del contenido anterior */
+}
+
+.footer-text {
+  margin: 0; /* Elimina el margen por defecto del párrafo */
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+  .main-footer {
+    padding: 1.5rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-footer {
+    padding: 1rem 0.5rem;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+  }
+}

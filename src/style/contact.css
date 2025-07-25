@@ -1,0 +1,273 @@
+/* Importar variables de color de navbar.css si no están en globals.css */
+/* @import './navbar.css'; */ /* Descomentar si las variables no son globales */
+
+/* Variables CSS para colores (si no se importan globalmente) */
+:root {
+  --navbar-bg: #1a1a2e;
+  --text-color: #e0e0e0;
+  --accent-color: #00bbf9;
+  --hover-accent-color: #ffc300;
+  --card-bg: #2e2e4a;
+  --border-color: #4a4a6a;
+  --form-bg: #252540; /* Fondo para el formulario */
+  --input-bg: #3a3a5a; /* Fondo para inputs */
+  --input-border: #5a5a7a; /* Borde para inputs */
+  --button-bg: #00bbf9;
+  --button-hover-bg: #ffc300;
+  --button-text: #1a1a2e;
+}
+
+.contact-section {
+  width: 100%;
+  max-width: 1000px; /* Ancho máximo para la sección */
+  margin: 6rem auto; /* Margen superior e inferior */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.contact-title {
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  animation: fadeInScale 1s ease-out forwards;
+}
+
+.contact-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  background-color: var(--form-bg);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
+}
+
+.contact-form {
+  flex: 2; /* El formulario ocupa más espacio */
+  min-width: 300px; /* Ancho mínimo para el formulario */
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0.75rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 191, 249, 0.3); /* Sombra de enfoque */
+}
+
+.form-textarea {
+  resize: vertical; /* Permite redimensionar verticalmente */
+  min-height: 120px;
+}
+
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  align-self: flex-end; /* Alinea el botón a la derecha */
+}
+
+.submit-button:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-3px);
+}
+
+.contact-info {
+  flex: 1; /* La información de contacto ocupa menos espacio */
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-left: 1px solid var(--border-color); /* Separador visual */
+}
+
+.info-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--hover-accent-color);
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  color: var(--text-color);
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+  transform: translateY(-5px) scale(1.1);
+}
+
+.email-display {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.direct-email-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.direct-email-link:hover {
+  color: var(--hover-accent-color);
+  text-decoration: underline;
+}
+
+/* Animación para el título (reutilizada de Proyects) */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+  .contact-section {
+    padding: 1rem;
+    margin: 4rem auto;
+  }
+
+  .contact-title {
+    font-size: 2.8rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-content {
+    flex-direction: column; /* Apila el formulario y la info */
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .contact-form {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .submit-button {
+    align-self: center; /* Centra el botón en móviles */
+    width: 100%; /* Ocupa todo el ancho */
+  }
+
+  .contact-info {
+    min-width: unset;
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border-color); /* Separador superior */
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+
+  .info-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-link svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .email-display {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-title {
+    font-size: 2.2rem;
+  }
+  .contact-subtitle {
+    font-size: 0.9rem;
+  }
+  .contact-content {
+    padding: 1.5rem;
+  }
+  .form-input,
+  .form-textarea {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  .submit-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .info-heading {
+    font-size: 1.3rem;
+  }
+  .social-link svg {
+    width: 24px;
+    height: 24px;
+  }
+}
