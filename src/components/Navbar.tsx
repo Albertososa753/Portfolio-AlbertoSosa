@@ -1,9 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { Link } from "react-scroll"
-import "@/style/navbar.css"
+import "../style/navbar.css"
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
@@ -15,95 +14,117 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <Image src="/assets/Logos/logo.png" alt="Logo" width={50} height={50} className="logo" />
+      {/* Logo futurista */}
+      <div className="logo">
+        <div className="logo-icon">
+          <div className="logo-core"></div>
+          <div className="logo-ring"></div>
+        </div>
+        <span className="logo-text">AS</span>
+      </div>
 
-      <div className="desktopMenu">
-        <Link activeClass="active" to="intro" spy smooth offset={-100} duration={500} className="desktopMenuListItem">
-          Inicio
+      {/* Menú desktop */}
+      <div className="desktop-menu">
+        <Link activeClass="active" to="intro" spy smooth offset={-100} duration={500} className="menu-item">
+          <span className="menu-text">Inicio</span>
+          <div className="menu-glow"></div>
         </Link>
-        <Link activeClass="active" to="skills" spy smooth offset={-50} duration={500} className="desktopMenuListItem">
-          Acerca de
+        <Link activeClass="active" to="skills" spy smooth offset={-50} duration={500} className="menu-item">
+          <span className="menu-text">Acerca de</span>
+          <div className="menu-glow"></div>
         </Link>
-        <Link activeClass="active" to="proyects" spy smooth offset={-50} duration={500} className="desktopMenuListItem">
-          Portfolio
+        <Link activeClass="active" to="proyects" spy smooth offset={-50} duration={500} className="menu-item">
+          <span className="menu-text">Portfolio</span>
+          <div className="menu-glow"></div>
         </Link>
       </div>
 
-      <button className="desktopMenuBtn" onClick={() => handleScroll("contact")}>
-        <Image src="/assets/Logos/contact.png" alt="Contactame" width={20} height={20} className="desktopMenuImg" />
-        Contactame
+      {/* Botón de contacto */}
+      <button className="contact-btn" onClick={() => handleScroll("contact")}>
+        <div className="contact-icon">
+          <div className="contact-dot"></div>
+          <div className="contact-pulse"></div>
+        </div>
+        <span className="contact-text">Contactame</span>
+        <div className="btn-glow"></div>
       </button>
 
-      <Image
-        src="/assets/Logos/menu.png"
-        alt="Menú"
-        width={30}
-        height={30}
-        className="mobMenu"
-        onClick={() => setShowMenu(!showMenu)}
-      />
+      {/* Botón menú móvil */}
+      <div className={`mobile-menu-btn ${showMenu ? "active" : ""}`} onClick={() => setShowMenu(!showMenu)}>
+        <div className="hamburger-line"></div>
+        <div className="hamburger-line"></div>
+        <div className="hamburger-line"></div>
+      </div>
 
-      <div className="navMenu" style={{ display: showMenu ? "flex" : "none" }}>
-        <Link
-          activeClass="active"
-          to="intro"
-          spy
-          smooth
-          offset={-100}
-          duration={500}
-          className="listItem"
-          onClick={() => handleScroll("intro")}
-        >
-          Inicio
-        </Link>
-        <Link
-          activeClass="active"
-          to="skills"
-          spy
-          smooth
-          offset={-50}
-          duration={500}
-          className="listItem"
-          onClick={() => handleScroll("skills")}
-        >
-          Acerca de
-        </Link>
-        <Link
-          activeClass="active"
-          to="proyects"
-          spy
-          smooth
-          offset={-50}
-          duration={500}
-          className="listItem"
-          onClick={() => handleScroll("proyects")}
-        >
-          Portfolio
-        </Link>
-        <Link
-          activeClass="active"
-          to="contact"
-          spy
-          smooth
-          offset={-50}
-          duration={500}
-          className="listItem"
-          onClick={() => handleScroll("contact")}
-        >
-          Contacto
-        </Link>
-        <Link
-          activeClass="active"
-          to="cv"
-          spy
-          smooth
-          offset={-50}
-          duration={500}
-          className="listItem"
-          onClick={() => handleScroll("cv")}
-        >
-          Curriculum Vitae
-        </Link>
+      {/* Menú móvil */}
+      <div className={`mobile-menu ${showMenu ? "show" : ""}`}>
+        <div className="mobile-menu-content">
+          <Link
+            activeClass="active"
+            to="intro"
+            spy
+            smooth
+            offset={-100}
+            duration={500}
+            className="mobile-menu-item"
+            onClick={() => handleScroll("intro")}
+          >
+            <span className="mobile-item-text">Inicio</span>
+            <div className="mobile-item-glow"></div>
+          </Link>
+          <Link
+            activeClass="active"
+            to="skills"
+            spy
+            smooth
+            offset={-50}
+            duration={500}
+            className="mobile-menu-item"
+            onClick={() => handleScroll("skills")}
+          >
+            <span className="mobile-item-text">Acerca de</span>
+            <div className="mobile-item-glow"></div>
+          </Link>
+          <Link
+            activeClass="active"
+            to="proyects"
+            spy
+            smooth
+            offset={-50}
+            duration={500}
+            className="mobile-menu-item"
+            onClick={() => handleScroll("proyects")}
+          >
+            <span className="mobile-item-text">Portfolio</span>
+            <div className="mobile-item-glow"></div>
+          </Link>
+          <Link
+            activeClass="active"
+            to="contact"
+            spy
+            smooth
+            offset={-50}
+            duration={500}
+            className="mobile-menu-item"
+            onClick={() => handleScroll("contact")}
+          >
+            <span className="mobile-item-text">Contacto</span>
+            <div className="mobile-item-glow"></div>
+          </Link>
+          <Link
+            activeClass="active"
+            to="cv"
+            spy
+            smooth
+            offset={-50}
+            duration={500}
+            className="mobile-menu-item"
+            onClick={() => handleScroll("cv")}
+          >
+            <span className="mobile-item-text">Curriculum Vitae</span>
+            <div className="mobile-item-glow"></div>
+          </Link>
+        </div>
       </div>
     </nav>
   )

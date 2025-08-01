@@ -1,190 +1,463 @@
-/* Variables CSS para colores */
+/* Variables CSS */
 :root {
-  --navbar-bg: #1a1a2e; /* Dark blue/purple */
-  --text-color: #e0e0e0; /* Light gray */
-  --accent-color: #00bbf9; /* Vibrant blue/cyan */
-  --hover-accent-color: #ffc300; /* Gold/yellow */
-  --mobile-menu-bg: #2e2e4a; /* Slightly lighter dark blue/purple */
+  --primary-color: #00bbf9;
+  --secondary-color: #ffc300;
+  --accent-color: #9d4edd;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #16213e;
 }
 
+/* Navbar principal */
 .navbar {
-  height: 5rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row;
-  position: sticky;
-  background: var(--navbar-bg);
-  top: 0;
-  z-index: 3;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 187, 249, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-.logo {
-  object-fit: cover;
-  height: 3.5rem;
-  width: 4.5rem;
-  margin-bottom: auto;
-}
-
-.desktopMenu {
-  display: flex;
-  align-items: center;
-}
-
-.desktopMenuListItem {
-  margin: 0 1.2rem;
-  cursor: pointer;
-  color: var(--text-color);
-  font-size: 1.1rem;
-  position: relative; /* Para el efecto de subrayado */
-  transition: color 0.3s ease-in-out;
-}
-
-.desktopMenuListItem::after {
+.navbar::before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 3px;
-  background-color: var(--accent-color);
-  bottom: -5px; /* Ajusta la posición del subrayado */
+  top: 0;
   left: 0;
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s ease-out;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 187, 249, 0.05) 0%,
+    rgba(157, 78, 221, 0.05) 50%,
+    rgba(255, 195, 0, 0.05) 100%
+  );
+  z-index: -1;
 }
 
-.desktopMenuListItem:hover::after,
-.desktopMenuListItem.active::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.desktopMenuListItem:hover {
-  color: var(--accent-color);
-}
-
-.desktopMenuBtn {
-  background: var(--accent-color);
-  color: var(--navbar-bg); /* Color de texto oscuro para contraste */
-  border: none;
+/* Logo futurista */
+.logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.5rem;
-  border-radius: 2rem;
+  gap: 0.8rem;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
 }
 
-.desktopMenuBtn:hover {
-  background: var(--hover-accent-color);
-  color: var(--navbar-bg);
+.logo-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
 }
 
-.desktopMenuImg {
-  object-fit: cover;
-  height: 1.2rem;
-  width: 1.2rem;
-  margin-right: 0.5rem;
-}
-
-.mobMenu {
-  display: none; /* Oculto por defecto en desktop */
-  object-fit: cover;
-  height: 1.8rem;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-}
-
-.mobMenu:hover {
-  transform: scale(1.1);
-}
-
-.navMenu {
+.logo-core {
   position: absolute;
-  top: 4.5rem; /* Ajusta la posición para que no se superponga con la navbar */
-  right: 2rem;
-  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  animation: logo-pulse 2s ease-in-out infinite;
+}
+
+.logo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: logo-rotate 3s linear infinite;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.logo-text::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  border-radius: 4px;
+  filter: blur(8px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Menú desktop */
+.desktop-menu {
   display: flex;
-  flex-direction: column;
-  padding: 0.8rem;
-  height: fit-content;
-  min-width: 15rem;
-  background: var(--mobile-menu-bg);
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  opacity: 0; /* Oculto por defecto, se controla con JS */
-  transform: translateY(-10px); /* Pequeño desplazamiento para la animación */
-  pointer-events: none; /* Deshabilita interacciones cuando está oculto */
+  align-items: center;
+  gap: 2rem;
 }
 
-.navMenu[style*="display: flex"] {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.listItem {
-  color: var(--text-color);
-  padding: 0.75rem 1.5rem;
-  margin: 0.25rem 0;
-  background: transparent;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+.menu-item {
+  position: relative;
+  padding: 0.8rem 1.2rem;
+  color: var(--text-secondary);
+  text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.listItem:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al pasar el ratón */
-  color: var(--accent-color);
+.menu-text {
+  position: relative;
+  z-index: 2;
 }
 
-.listItem.active {
-  color: var(--accent-color);
-  background-color: rgba(255, 255, 255, 0.05);
+.menu-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.menu-item:hover .menu-glow,
+.menu-item.active .menu-glow {
+  opacity: 0.1;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.menu-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover::before,
+.menu-item.active::before {
+  width: 80%;
+}
+
+/* Botón de contacto */
+.contact-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(0, 187, 249, 0.1);
+  border: 1px solid var(--primary-color);
+  border-radius: 25px;
+  color: var(--primary-color);
+  font-size: 0.9rem;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-/* Media Queries para Responsividad */
-@media screen and (max-width: 768px) {
-  .desktopMenu {
-    display: none;
+.contact-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.contact-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+
+.contact-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  animation: contact-pulse 2s ease-in-out infinite;
+}
+
+.contact-text {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 187, 249, 0.3);
+  color: white;
+}
+
+.contact-btn:hover .btn-glow {
+  opacity: 1;
+}
+
+/* Botón menú móvil */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Menú móvil */
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 187, 249, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-menu.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-menu-item {
+  position: relative;
+  padding: 1rem 1.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mobile-item-text {
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-item-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.mobile-menu-item:hover .mobile-item-glow,
+.mobile-menu-item.active .mobile-item-glow {
+  opacity: 0.1;
+}
+
+.mobile-menu-item:hover,
+.mobile-menu-item.active {
+  color: var(--primary-color);
+  transform: translateX(10px);
+}
+
+/* Animaciones */
+@keyframes logo-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
-  .desktopMenuBtn {
-    display: none;
-  }
-  .mobMenu {
-    display: flex; /* Visible en pantallas pequeñas */
-  }
-  .navbar {
-    padding: 1rem 1rem; /* Menos padding en móviles */
-  }
-  .navMenu {
-    right: 1rem; /* Ajusta la posición en móviles */
-    min-width: unset;
-    width: calc(100% - 2rem); /* Ocupa casi todo el ancho */
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .navbar {
-    height: 6rem;
+@keyframes logo-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  .desktopMenuListItem {
-    margin: 0 1.5rem;
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes contact-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .contact-btn {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .logo-text {
     font-size: 1.2rem;
   }
-  .desktopMenuBtn {
-    padding: 0.8rem 1.8rem;
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-core {
+    width: 12px;
+    height: 12px;
+  }
+
+  .logo-ring {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 70px;
+    padding: 0 1rem;
+  }
+
+  .mobile-menu {
+    top: 70px;
+  }
+
+  .mobile-menu-content {
+    padding: 1.5rem;
+  }
+
+  .mobile-menu-item {
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    padding: 0 4rem;
+  }
+
+  .desktop-menu {
+    gap: 3rem;
+  }
+
+  .menu-item {
     font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .contact-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 }

@@ -1,119 +1,412 @@
-/* Importar variables de color de navbar.css si no están en globals.css */
-/* @import './navbar.css'; */ /* Descomentar si las variables no son globales */
-
-/* Variables CSS para colores (si no se importan globalmente) */
+/* Variables CSS */
 :root {
-  --navbar-bg: #1a1a2e;
-  --text-color: #e0e0e0;
-  --accent-color: #00bbf9;
-  --hover-accent-color: #ffc300;
-  --mobile-menu-bg: #2e2e4a;
-  --dark-overlay: rgba(0, 0, 0, 0.6); /* Nueva variable para superposición */
+  --primary-color: #00bbf9;
+  --secondary-color: #ffc300;
+  --accent-color: #9d4edd;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #16213e;
 }
 
-#intro {
-  height: calc(100vh - 5rem); /* Ajusta la altura para la navbar */
+/* Estilos base */
+.intro-section {
+  position: relative;
+  min-height: 100vh;
   width: 100%;
+  overflow: hidden;
   display: flex;
-  flex-direction: column; /* Por defecto en columna para móviles */
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background-color: var(--navbar-bg); /* Fondo base */
-  color: var(--text-color);
-  padding: 2rem;
-  text-align: center; /* Centra el texto por defecto */
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
 }
 
-.bg-container {
+.particle-canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Asegura que esté detrás del contenido */
+  z-index: 1;
 }
 
-.bg-image {
-  object-fit: cover;
-  object-position: center; /* Centra la imagen */
-  filter: brightness(0.7) grayscale(0.2); /* Oscurece y desatura un poco la imagen */
-  transition: filter 0.5s ease-in-out;
+/* Efectos de luz de fondo */
+.background-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
-.bg-container::before {
+.light-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+
+.light-orb-1 {
+  top: 20%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  animation: float-1 6s ease-in-out infinite;
+}
+
+.light-orb-2 {
+  bottom: 30%;
+  right: 25%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
+  animation: float-2 8s ease-in-out infinite;
+}
+
+.light-orb-3 {
+  top: 60%;
+  left: 60%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  animation: float-3 7s ease-in-out infinite;
+}
+
+/* Contenedor principal */
+.intro-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Contenido de texto */
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.greeting {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+.greeting-text {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.greeting-text::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  animation: underlineExpand 1s ease-out 1.5s forwards;
+}
+
+.title-container {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+.intro-title {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.title-normal {
+  color: var(--text-primary);
+}
+
+.title-name {
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease-in-out infinite;
+  position: relative;
+}
+
+.title-name::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+  background-size: 200% 200%;
+  border-radius: 10px;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+.title-role {
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 2s forwards;
+}
+
+.description-container {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1.5s forwards;
+}
+
+.intro-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-description::before {
   content: "";
   position: absolute;
   top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 187, 249, 0.1), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 2.5s forwards;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 187, 249, 0.5);
+}
+
+/* Elemento visual abstracto */
+.visual-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 500px;
+}
+
+.geometric-shape {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.shape-layer {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.shape-layer-1 {
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, var(--navbar-bg) 0%, transparent 50%, var(--navbar-bg) 100%); /* Degradado para mejor legibilidad */
-  z-index: 1; /* Encima de la imagen, debajo del contenido */
+  border-color: var(--primary-color);
+  opacity: 0.6;
+  animation: rotate 20s linear infinite;
 }
 
-.introContent {
-  position: relative;
-  z-index: 2; /* Asegura que el contenido esté encima de la imagen y el overlay */
-  max-width: 900px; /* Limita el ancho del texto */
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra los elementos dentro del contenedor */
-  justify-content: center;
+.shape-layer-2 {
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  border-color: var(--secondary-color);
+  opacity: 0.4;
+  animation: rotate 15s linear infinite reverse;
 }
 
-.hello {
-  font-size: 1.8rem;
-  font-weight: 300;
-  margin-bottom: 0.5rem;
-  opacity: 0.9;
-}
-
-.introTitle {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  animation: fadeIn 1s ease-out forwards; /* Animación de entrada */
-}
-
-.introName {
-  color: var(--accent-color); /* Usa el color de acento */
-  display: inline-block; /* Para aplicar la animación de salto */
-  animation: jump 1.5s infinite alternate ease-in-out; /* Animación de salto más suave */
-}
-
-.introPara {
-  font-size: 1.1rem;
-  font-weight: 300;
-  line-height: 1.6;
-  max-width: 600px;
+.shape-layer-3 {
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  border-color: var(--accent-color);
   opacity: 0.8;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1.5s ease-out forwards; /* Animación de entrada */
-  animation-delay: 0.5s; /* Retraso para que aparezca después del título */
+  animation: rotate 25s linear infinite;
+}
+
+.central-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.floating-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.dot-1 {
+  top: 10%;
+  left: 20%;
+  animation: float-dot 3s ease-in-out infinite;
+}
+.dot-2 {
+  top: 20%;
+  right: 15%;
+  animation: float-dot 4s ease-in-out infinite 0.5s;
+}
+.dot-3 {
+  bottom: 30%;
+  left: 10%;
+  animation: float-dot 3.5s ease-in-out infinite 1s;
+}
+.dot-4 {
+  bottom: 20%;
+  right: 25%;
+  animation: float-dot 4.5s ease-in-out infinite 1.5s;
+}
+.dot-5 {
+  top: 60%;
+  left: 5%;
+  animation: float-dot 3.2s ease-in-out infinite 2s;
+}
+.dot-6 {
+  top: 40%;
+  right: 5%;
+  animation: float-dot 3.8s ease-in-out infinite 2.5s;
+}
+
+/* Indicador de scroll */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 3s forwards;
+}
+
+.scroll-mouse {
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  position: relative;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.scroll-wheel {
+  width: 2px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 1px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 2s ease-in-out infinite;
 }
 
 /* Animaciones */
-@keyframes jump {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px); /* Salto más sutil */
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -121,76 +414,171 @@
   }
 }
 
-/* Media Queries para Responsividad */
-@media screen and (min-width: 768px) {
-  #intro {
-    flex-direction: row; /* En desktop, el contenido y la imagen pueden estar lado a lado */
-    justify-content: space-around; /* Espacio entre contenido y imagen */
-    text-align: left; /* Alinea el texto a la izquierda */
-    padding: 0 4rem;
+@keyframes underlineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+}
+
+@keyframes float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-25px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(15px, -20px) scale(1.05);
+  }
+}
+
+@keyframes float-dot {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--primary-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+  }
+}
+
+@keyframes scroll-wheel {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(12px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .intro-container {
+    margin-top: 4.6rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
   }
 
-  .introContent {
-    align-items: flex-start; /* Alinea el contenido a la izquierda */
-    max-width: 50%; /* Ocupa la mitad del espacio */
+  .intro-title {
+    font-size: 2.5rem;
   }
 
-  .introTitle {
-    font-size: 4.5rem; /* Más grande en desktop */
+  .greeting-text {
+
+    font-size: 1.5rem;
   }
 
-  .hello {
-    font-size: 2.2rem;
+  .intro-description {
+    font-size: 1rem;
   }
 
-  .introPara {
+  .action-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .visual-element {
+    height: 300px;
+  }
+
+  .geometric-shape {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 2rem;
+  }
+
+  .greeting-text {
     font-size: 1.2rem;
   }
 
-  .bg-container {
-    position: relative; /* Permite que la imagen se posicione como un elemento flex */
-    width: 50%; /* Ocupa la otra mitad del espacio */
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .bg-image {
-    position: relative; /* Para que `fill` funcione dentro del contenedor flex */
-    width: 100%;
-    height: 100%;
-    max-width: 500px; /* Limita el tamaño de la imagen */
-    max-height: 500px;
-    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
-    filter: brightness(1) grayscale(0); /* Menos filtro en desktop si la imagen es el foco */
-  }
-
-  .bg-container::before {
-    background: none; /* Elimina el degradado en desktop si la imagen es prominente */
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .introTitle {
-    font-size: 5.5rem;
-  }
-  .hello {
-    font-size: 2.5rem;
-  }
-  .introPara {
-    font-size: 1.3rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .introTitle {
-    font-size: 2.5rem;
-  }
-  .hello {
-    font-size: 1.5rem;
-  }
-  .introPara {
-    font-size: 1rem;
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }

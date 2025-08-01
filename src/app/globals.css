@@ -1,37 +1,23 @@
-
-
-*{
-    margin: 0 ;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    background: transparent;
-    font-family: 'Poppins', sans-serif;
-
-}
-body{
-    background: rgb(30, 30, 30);
-    color: white;
-    overflow: hidden;
-    overflow-y: scroll;
-
+/* Reset y fuente global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
 }
 
-::-webkit-scrollbar {
-    width: 15px; 
-    height: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1); 
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgb(191, 191, 76); 
-    border-radius: 1px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5); 
-  }
-  
+/* Estilo del body con scroll funcional pero sin barra visible */
+body {
+  background: rgb(30, 30, 30);
+  color: white;
+  overflow-y: scroll; /* permite scroll vertical */
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE y Edge antiguos */
+}
+
+/* Ocultar barra de scroll en navegadores WebKit (Chrome, Safari, Edge Chromium) */
+body::-webkit-scrollbar {
+  display: none;
+}

@@ -2,34 +2,35 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Importar estilos base del carrusel
-import { X, Github } from "lucide-react"; // Importar iconos de Lucide React
-import "@/utils/ImageCarouselModal.css"; // Nuevo archivo de estilos
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { X, Github } from "lucide-react";
+import "@/utils/ImageCarouselModal.css";
 
 interface Proyecto {
   titulo: string;
   duracion: string;
   rol: string;
   descripcion: string;
-  tecnologias: string;
+  tecnologias: string[]; // ← CORREGIDO
   enlaces: {
     github: string;
-    // Puedes añadir más enlaces aquí si es necesario, por ejemplo, 'demo': string;
+    demo?: string;
   };
 }
-const modalVariants = {
-  hidden:   { opacity: 0, scale: 0.95 },
-  visible:  {
+
+const modalVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
     opacity: 1,
     scale: 1,
     transition: { duration: 0.3, ease: "easeOut" },
   },
-  exit:     {
+  exit: {
     opacity: 0,
     scale: 0.95,
     transition: { duration: 0.2, ease: "easeIn" },
   },
-} as Variants;
+};
 
 interface ModalCarouselProps {
   images: string[];
@@ -42,26 +43,12 @@ export default function ModalCarousel({
   proyecto,
   closeModal,
 }: ModalCarouselProps) {
-  // Animación para la aparición del modal
-  const modalVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.95,
-      transition: { duration: 0.2, ease: "easeIn" },
-    },
-  };
-
   return (
     <motion.div
-      initial="hidden" // ahora es perfectamente válido
+      initial="hidden"
       animate="visible"
       exit="exit"
+      variants={modalVariants}
       className="modal-carousel-container"
     >
       <button
@@ -89,7 +76,8 @@ export default function ModalCarousel({
                   }
                   alt={`${proyecto.titulo} - Imagen ${idx + 1}`}
                   fill
-                  style={{ objectFit: "contain" }} // Asegura que la imagen se ajuste sin recortarse
+                  style={{ objectFit: "contain" }}
+                  unoptimized
                 />
               </div>
             ))}
@@ -119,7 +107,7 @@ export default function ModalCarousel({
           <div className="detail-group">
             <p className="detail-label">Tecnologías:</p>
             <p className="detail-value technologies-text">
-              {proyecto.tecnologias}
+              {proyecto.tecnologias.join(", ")}
             </p>
           </div>
 
