@@ -10,5 +10,6 @@ export interface Project {
   descripcion: string
   tecnologias: string[]
   imagenes: string[]
+  video?: string
   enlaces: ProjectLink
 }

@@ -111,19 +111,7 @@ export default function Navbar() {
             <span className="mobile-item-text">Contacto</span>
             <div className="mobile-item-glow"></div>
           </Link>
-          <Link
-            activeClass="active"
-            to="cv"
-            spy
-            smooth
-            offset={-50}
-            duration={500}
-            className="mobile-menu-item"
-            onClick={() => handleScroll("cv")}
-          >
-            <span className="mobile-item-text">Curriculum Vitae</span>
-            <div className="mobile-item-glow"></div>
-          </Link>
+          
         </div>
       </div>
     </nav>

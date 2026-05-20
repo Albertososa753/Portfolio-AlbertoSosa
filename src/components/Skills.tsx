@@ -19,12 +19,15 @@ const TypingText = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
-        setDisplayText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      }
-    }, delay + currentIndex * speed);
+    const timer = setTimeout(
+      () => {
+        if (currentIndex < text.length) {
+          setDisplayText((prev) => prev + text[currentIndex]);
+          setCurrentIndex((prev) => prev + 1);
+        }
+      },
+      delay + currentIndex * speed,
+    );
 
     return () => clearTimeout(timer);
   }, [currentIndex, text, delay, speed]);
@@ -44,7 +47,7 @@ export default function Skills() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const elements = skillsRef.current?.querySelectorAll(".animate-on-scroll");
@@ -58,19 +61,22 @@ export default function Skills() {
       title: "Lenguajes de Programación",
       skills: [
         { name: "JavaScript", src: "/assets/svg/js.svg" },
-        { name: "C#", src: "/assets/svg/cshar.svg" },
+        { name: "TypeScript", src: "/assets/svg/typescript.svg" },
       ],
     },
+
     {
       title: "Desarrollo Front-End",
       skills: [
         { name: "HTML", src: "/assets/svg/front/html.svg" },
         { name: "CSS", src: "/assets/svg/front/css.svg" },
-        { name: "Angular", src: "/assets/svg/front/angular.svg" },
-        { name: "Bootstrap", src: "/assets/svg/front/bo.svg" },
         { name: "React", src: "/assets/svg/front/react.svg" },
+        { name: "Next.js", src: "/assets/svg/front/nextdotjs.svg" },
+        { name: "Angular", src: "/assets/svg/front/angular.svg" },
+        { name: "Tailwind", src: "/assets/svg/front/tailwindcss.svg" },
         { name: "Redux", src: "/assets/svg/front/redux.svg" },
         { name: "Sass", src: "/assets/svg/front/scss.svg" },
+        { name: "Bootstrap", src: "/assets/svg/front/bo.svg" },
       ],
     },
     {
@@ -78,12 +84,21 @@ export default function Skills() {
       skills: [
         { name: "Node.js", src: "/assets/svg/back/node.svg" },
         { name: "Express", src: "/assets/svg/back/express.svg" },
+        { name: "NestJS", src: "/assets/svg/back/nestjs.svg" },
+        { name: "Fastify", src: "/assets/svg/back/fastify.svg" },
+        { name: "Prisma", src: "/assets/svg/back/prisma.svg" },
         { name: "Sequelize", src: "/assets/svg/back/sequelize.svg" },
         { name: "PostgreSQL", src: "/assets/svg/back/post.svg" },
         { name: "MongoDB", src: "/assets/svg/back/mongodb.svg" },
-        { name: ".NET", src: "/assets/svg/back/net.svg" },
-        { name: "Entity Framework", src: "/assets/svg/back/entity_image.svg" },
+
         { name: "Docker", src: "/assets/svg/back/docker.svg" },
+      ],
+    },
+    {
+      title: "Desarrollo Móvil",
+      skills: [
+        { name: "React Native", src: "/assets/svg/back/createreactapp.svg" },
+        { name: "Expo", src: "/assets/svg/back/expo.svg" },
       ],
     },
     {
@@ -115,12 +130,14 @@ export default function Skills() {
           <TypingText text="LO QUE HAGO" delay={0} speed={30} />
         </h2>
         <p className="section-description">
-          Soy un desarrollador web con experiencia en la creación de sitios web
-          atractivos y funcionales. Tengo una fuerte pasión por el aprendizaje
-          constante, siempre buscando mejorar mis habilidades y explorar nuevas
-          tecnologías. Además, disfruto enormemente trabajando en proyectos en
-          equipo, donde creo que la colaboración y la sinergia impulsan la
-          creatividad y el éxito.
+          Soy un programador con experiencia en desarrollo de aplicaciones web y
+          móviles, enfocado en construir soluciones funcionales, bien
+          estructuradas y con buena experiencia de uso. Disfruto mucho programar
+          y mejorar constantemente mis habilidades. También disfruto enormemente
+          trabajar en equipo, ya que además de aportar mis conocimientos, valoro
+          mucho la oportunidad de aprender de mis compañeros y contribuir a un
+          ambiente de trabajo positivo, colaborativo y orientado al crecimiento
+          conjunto.
         </p>
       </div>
 
@@ -174,7 +191,6 @@ export default function Skills() {
       </div>
 
       {/* Título de skills */}
-
       <h2 className="section-title skills-title-secondary animate-on-scroll">
         <TypingText text="SKILLS" delay={10} speed={50} />
       </h2>

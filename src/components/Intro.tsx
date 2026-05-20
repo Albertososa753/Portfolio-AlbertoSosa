@@ -98,7 +98,7 @@ const ParticleField = () => {
 
 export default function Intro() {
   return (
-    <section className="intro-section">
+    <section className="intro-section ">
       {/* Fondo de partículas */}
       <ParticleField />
 
@@ -122,14 +122,14 @@ export default function Intro() {
               <span className="title-normal">Soy </span>
               <span className="title-name">Alberto Sosa</span>
               <br />
-              <span className="title-role">Desarrollador FullStack</span>
+              <span className="title-role">Desarrollador Full Stack</span>
             </h1>
           </div>
 
           <div className="description-container">
             <p className="intro-description">
               Este es mi sitio web, donde comparto una colección de los proyectos que he creado a lo largo de mi
-              trayectoria como desarrollador web.
+              trayectoria como desarrollador.
             </p>
           </div>
 

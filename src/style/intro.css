@@ -21,6 +21,8 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+
+
 }
 
 .particle-canvas {
@@ -87,6 +89,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+
 }
 
 /* Contenido de texto */
@@ -98,6 +101,7 @@
 
 .greeting {
   opacity: 0;
+  margin-top: 1.5rem;
   animation: fadeInUp 1s ease-out 0.5s forwards;
 }
 
@@ -529,7 +533,12 @@
     opacity: 1;
   }
 }
+@media (max-width: 1350px) {
+  .intro-container {
+  margin-top: 4rem;
+  }
 
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .intro-container {

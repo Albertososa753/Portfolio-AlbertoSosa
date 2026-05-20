@@ -78,12 +78,12 @@ export default function Contact() {
                 Descarga mi CV completo para conocer más sobre mi experiencia profesional y habilidades técnicas.
               </p>
               <div className="cv-actions">
-                <a href="/AlbertoSosaCV.pdf" download className="cv-button download">
+                <a href="Full Stack CV (4).pdf" download className="cv-button download">
                   <Download size={20} />
                   <span>Descargar CV</span>
                   <div className="button-glow"></div>
                 </a>
-                <a href="/AlbertoSosaCV.pdf" target="_blank" rel="noopener noreferrer" className="cv-button preview">
+                <a href="Full Stack CV (4).pdf" target="_blank" rel="noopener noreferrer" className="cv-button preview">
                   <Eye size={20} />
                   <span>Vista previa</span>
                 </a>

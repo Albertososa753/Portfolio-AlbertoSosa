@@ -18,6 +18,4 @@ body {
 }
 
 /* Ocultar barra de scroll en navegadores WebKit (Chrome, Safari, Edge Chromium) */
-body::-webkit-scrollbar {
-  display: none;
-}
+
