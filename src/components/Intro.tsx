@@ -98,7 +98,7 @@ const ParticleField = () => {
 
 export default function Intro() {
   return (
-    <section className="intro-section ">
+    <section id="intro"  className="intro-section ">
       {/* Fondo de partículas */}
       <ParticleField />
 

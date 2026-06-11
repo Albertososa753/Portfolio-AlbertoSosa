@@ -19,3 +19,15 @@ body {
 
 /* Ocultar barra de scroll en navegadores WebKit (Chrome, Safari, Edge Chromium) */
 
+html,
+body {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge antiguos */
+}
+
+/* Chrome, Safari y Edge */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}

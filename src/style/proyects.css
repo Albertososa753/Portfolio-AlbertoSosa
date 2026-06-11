@@ -155,13 +155,13 @@
 .project-card {
   position: relative;
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-radius: 20px;
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+ 
 }
+
 
 .project-card:hover {
   border-color: rgba(0, 187, 249, 0.5);
@@ -856,6 +856,10 @@
     margin-bottom: 2.5rem;
   }
 
+    .project-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
   .section-label {
     font-size: 0.75rem;
     padding: 0.4rem 1rem;
@@ -942,11 +946,7 @@
 
 /* Optimizacion de animacion para cards */
 .project-card {
-  will-change: opacity, transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* ============================================
@@ -1152,5 +1152,43 @@
   .video-play-overlay svg {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* ============================================
+   CAROUSEL IMAGE CONTAINER - FIXED HEIGHT
+   ============================================ */
+
+/* Container con altura fija para evitar saltos */
+.carousel-image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
+  max-height: 800px;
+}
+
+.carousel-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive container heights */
+@media (max-width: 768px) {
+  .carousel-image-container {
+    height: 55vh;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-image-container {
+    height: 45vh;
+    max-height: 350px;
   }
 }

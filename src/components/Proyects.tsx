@@ -379,14 +379,16 @@ const MediaCarouselModal = ({
                       Tu navegador no soporta el elemento de video.
                     </video>
                   ) : (
-                    <Image
-                      src={currentMedia.src || "/placeholder.svg"}
-                      alt={`${projectTitle} - Imagen ${currentMediaIndex + 1}`}
-                      width={1200}
-                      height={800}
-                      className="carousel-image"
-                      priority
-                    />
+                    <div className="carousel-image-container">
+                      <Image
+                        src={currentMedia.src || "/placeholder.svg"}
+                        alt={`${projectTitle} - Imagen ${currentMediaIndex + 1}`}
+                        width={1200}
+                        height={800}
+                        className="carousel-image"
+                        priority
+                      />
+                    </div>
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -607,12 +609,15 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
   return (
     <motion.div
       className="project-card"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.15 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{
+        once: true,
+        margin: "0px 0px -120px 0px",
+      }}
       transition={{
-        duration: 0.5,
-        delay: index * 0.15,
+        duration: 0.45,
+        delay: index * 0.08,
       }}
       onClick={onClick}
     >
@@ -658,9 +663,7 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
           </div>
         </div>
 
-        <p className="project-card-description">
-          {project.descripcion}
-        </p>
+        <p className="project-card-description">{project.descripcion}</p>
 
         <div className="project-card-tech">
           {project.tecnologias.slice(0, 3).map((tech, idx) => (
@@ -678,18 +681,17 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
 
         <div className="card-footer">
           <div className="card-links">
-            {project.enlaces.github &&
-              project.enlaces.github !== "#" && (
-                <a
-                  href={project.enlaces.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card-link"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Github size={16} />
-                </a>
-              )}
+            {project.enlaces.github && project.enlaces.github !== "#" && (
+              <a
+                href={project.enlaces.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-link"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Github size={16} />
+              </a>
+            )}
 
             {project.enlaces.demo && (
               <a
