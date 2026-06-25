@@ -1,32 +1,58 @@
-/* Reset y fuente global */
+/* ===========================================================
+   Tokens globales del sistema de diseño
+   Paleta de marca única (cian + dorado) y neutrales.
+   Breakpoints de referencia: 480 / 768 / 1024 / 1280
+   =========================================================== */
+:root {
+  /* Marca (paleta única — fuente de verdad) */
+  --brand-cyan: #00bbf9;
+  --brand-cyan-bright: #00d4ff; /* variante para gradientes/brillos */
+  --brand-gold: #ffc300;
+  --brand-purple: #9d4edd;
+
+  /* Aliases usados por las secciones (antes dispersos en skills.css) */
+  --primary-color: var(--brand-cyan);
+  --secondary-color: #9d9d9d;
+  --accent-color: var(--brand-gold);
+  --primary-glow: rgba(0, 187, 249, 0.3);
+  --secondary-glow: rgba(124, 58, 237, 0.3);
+
+  /* Texto */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Superficies */
+  --bg-base: #000000;
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.5);
+  --surface-1: #1a1a2e;
+  --surface-2: #16213e;
+
+  /* Bordes */
+  --border-color: rgba(148, 163, 184, 0.1);
+}
+
+/* Reset global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  background: transparent;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* Estilo del body con scroll funcional pero sin barra visible */
-body {
-  background: rgb(30, 30, 30);
-  color: white;
-  overflow-y: scroll; /* permite scroll vertical */
-  scrollbar-width: none;         /* Firefox */
-  -ms-overflow-style: none;      /* IE y Edge antiguos */
-}
-
-/* Ocultar barra de scroll en navegadores WebKit (Chrome, Safari, Edge Chromium) */
-
+/* Tipografía y fondo base */
 html,
 body {
-  overflow-y: scroll;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  overflow-y: scroll; /* permite scroll vertical */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE y Edge antiguos */
 }
 
-/* Chrome, Safari y Edge */
+/* Ocultar barra de scroll en navegadores WebKit (Chrome, Safari, Edge Chromium) */
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;

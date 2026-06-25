@@ -1,50 +1,16 @@
 "use client"
-import { useState, useRef, useEffect } from "react"
 import { Linkedin, Github, FileText, Download, Eye } from "lucide-react"
+import TypingText from "./TypingText"
+import { useScrollReveal } from "../hooks/useScrollReveal"
 import "../style/contact.css";
-// Componente de texto con efecto typing
-const TypingText = ({ text, delay = 0, speed = 100 }: { text: string; delay?: number; speed?: number }) => {
-  const [displayText, setDisplayText] = useState("")
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const timer = setTimeout(
-      () => {
-        if (currentIndex < text.length) {
-          setDisplayText((prev) => prev + text[currentIndex])
-          setCurrentIndex((prev) => prev + 1)
-        }
-      },
-      delay + currentIndex * speed,
-    )
-
-    return () => clearTimeout(timer)
-  }, [currentIndex, text, delay, speed])
-
-  return <span>{displayText}</span>
-}
 
 export default function Contact() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("animate-in")
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    sectionRef.current?.querySelectorAll(".animate-on-scroll")?.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+  const sectionRef = useScrollReveal<HTMLElement>()
 
   return (
-    <section id="contact" ref={sectionRef} className="contact-section">
+    <section id="contact" ref={sectionRef}  className="contact-section">
       {/* Efectos de fondo */}
-      <div className="contact-background">
+      <div  className="contact-background">
         <div className="bg-grid"></div>
         <div className="floating-shapes">
           {[...Array(4)].map((_, i) => (

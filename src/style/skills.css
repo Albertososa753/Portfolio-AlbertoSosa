@@ -1,23 +1,11 @@
-/* Variables CSS mejoradas */
-:root {
-  --primary-color: #00d4ff;
-  --primary-glow: rgba(109, 99, 94, 0.3);
-  --secondary-color: #9d9d9d;
-  --secondary-glow: rgba(124, 58, 237, 0.3);
-  --accent-color: #f59e0b;
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --bg-dark: #0f172a;
-  --bg-card: rgba(30, 41, 59, 0.5);
-  --border-color: rgba(148, 163, 184, 0.1);
-}
+/* Tokens centralizados en src/app/globals.css (:root) */
 
 /* Seccion principal */
 #skills {
   position: relative;
   width: 100%;
   margin: auto;
+  background: transparent;
   padding: 4rem 2rem;
   color: var(--text-primary);
   overflow: hidden;
@@ -425,7 +413,7 @@
 @media (max-width: 768px) {
   #skills {
     padding: 3rem 1.5rem;
-    margin: 4rem auto;
+    margin:  auto;
   }
   .hola {
     margin: 0;

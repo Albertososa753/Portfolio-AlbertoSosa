@@ -1,0 +1,94 @@
+/* Fondo animado global: partículas + orbes de luz.
+   Fijo detrás de todo el contenido para que se vea en cualquier
+   sección de la página. */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.animated-bg .particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Efectos de luz de fondo */
+.animated-bg .background-lights {
+  position: absolute;
+  inset: 0;
+}
+
+.animated-bg .light-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+
+.animated-bg .light-orb-1 {
+  top: 20%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  animation: float-1 6s ease-in-out infinite;
+}
+
+.animated-bg .light-orb-2 {
+  bottom: 30%;
+  right: 25%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
+  animation: float-2 8s ease-in-out infinite;
+}
+
+.animated-bg .light-orb-3 {
+  top: 60%;
+  left: 60%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  animation: float-3 7s ease-in-out infinite;
+}
+
+@keyframes float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+}
+
+@keyframes float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-25px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(15px, -20px) scale(1.05);
+  }
+}
+
+/* Respetar la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg .light-orb {
+    animation: none;
+  }
+}

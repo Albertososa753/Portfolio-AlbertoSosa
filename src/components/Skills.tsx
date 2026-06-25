@@ -1,56 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import TypingText from "./TypingText";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import "../style/skills.css";
 
-const TypingText = ({
-  text,
-  delay = 0,
-  speed = 30,
-}: {
-  text: string;
-  delay?: number;
-  speed?: number;
-}) => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(
-      () => {
-        if (currentIndex < text.length) {
-          setDisplayText((prev) => prev + text[currentIndex]);
-          setCurrentIndex((prev) => prev + 1);
-        }
-      },
-      delay + currentIndex * speed,
-    );
-    return () => clearTimeout(timer);
-  }, [currentIndex, text, delay, speed]);
-
-  return <span>{displayText}</span>;
-};
-
 export default function Skills() {
-  const skillsRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    const elements = skillsRef.current?.querySelectorAll(".animate-on-scroll");
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const skillsRef = useScrollReveal<HTMLElement>();
 
   const skillGroups = [
     {

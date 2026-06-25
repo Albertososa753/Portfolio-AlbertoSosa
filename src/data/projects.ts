@@ -1,0 +1,245 @@
+import type { Project } from "../types/project";
+
+// Lista de proyectos con múltiples imágenes / videos.
+export const proyectos: Project[] = [
+  {
+    titulo: "QrClick",
+    duracion: "02/01/2026 - 31/03/2026",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Sistema complejo para administración de eventos, venta y validación de entradas mediante códigos QR únicos en tiempo real. Incluye tickets pagos y gratuitos, distribución de entradas para colaboradores, sistema de colas para soportar picos de demanda, panel administrativo con roles y aplicación móvil para validación mediante escaneo QR o ingreso manual. Integración con Mercado Pago para procesamiento de pagos y registro automático de tickets.",
+    tecnologias: [
+      "TypeScript",
+      "Next.js",
+      "NestJS",
+      "Fastify",
+      "Prisma",
+      "PostgreSQL",
+      "React Native",
+      "Expo",
+      "BullMQ",
+      "Mercado Pago API",
+    ],
+    imagenes: [
+      "/assets/qrclick.png",
+      "/assets/QRCLICK/qrclick1.png",
+      "/assets/QRCLICK/qrclick2.png",
+    ],
+    enlaces: {
+      demo: "https://qrclick.com.ar",
+    },
+  },
+  {
+    titulo: "QrClick Validator",
+    duracion: "02/01/2026 - 31/03/2026",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Aplicación móvil responsive con interfaces adaptadas específicamente para Android e iOS, ajustando automáticamente la distribución y visualización de componentes según el sistema operativo, desarrollada para la validación y control de accesos en eventos. Incluye sistema de autenticación para validadores, sección informativa del evento, visualización completa de tickets para validación manual en caso de pérdida de conexión y sistema de escaneo mediante cámara para lectura de códigos QR en tiempo real.  ",
+    tecnologias: ["TypeScript", "React Native", "Expo", "Expo-Camera"],
+    imagenes: ["/assets/ChatGPT Image 19 may 2026, 04_03_32.png"],
+    video: "/assets/qrclick-validator-demo.mp4",
+    enlaces: {},
+  },
+  {
+    titulo: "Heladería Sibera",
+    duracion: "02/01/2025 - 15/03/2025",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Sistema web de gestión de productos para una heladería, con panel administrativo para carga y actualización dinámica de helados, imágenes y catálogo online. Desarrollo de una interfaz moderna, visualmente atractiva y con animaciones avanzadas, enfocada en mejorar la experiencia del usuario y la presentación interactiva de los productos en tiempo real.",
+    tecnologias: [
+      "TypeScript",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "Sequelize",
+      "Firebase",
+      "PostgreSQL",
+    ],
+    imagenes: [
+      "/assets/heladeriaSib.png",
+      "/assets/SIBERIA/s3.png",
+      "/assets/SIBERIA/s2.png",
+      "/assets/SIBERIA/s1.png",
+    ],
+    enlaces: { demo: "https://www.heladeriasiberia.com/" },
+  },
+  {
+    titulo: "Venta de Quinta en San Nicolás de los Arroyos",
+    duracion: "01/06/2025 - 15/07/2025",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Sitio web desarrollado para promocionar la venta de una casa quinta en San Nicolás de los Arroyos, enfocado en mejorar el posicionamiento en buscadores mediante técnicas avanzadas de SEO. El cliente necesitaba una alternativa digital efectiva para aumentar la visibilidad de la propiedad, por lo que se trabajó especialmente en la optimización para búsquedas por palabras clave relacionadas con quintas, inmuebles y ubicaciones específicas.",
+    tecnologias: ["JavaScript", "Next.js", "TypeScript", "SEO"],
+    imagenes: ["/assets/quintaVenta.png"],
+    enlaces: { demo: "https://venta-quinta.vercel.app/" },
+  },
+  {
+    titulo: "Venta de Propiedad en San Nicolás de los Arroyos",
+    duracion: "01/06/2025 - 15/07/2025",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Sitio web desarrollado para promocionar la venta de una propiedad céntrica, enfocado en mejorar el posicionamiento en buscadores mediante técnicas avanzadas de SEO. El cliente necesitaba una alternativa digital efectiva para aumentar la visibilidad de la propiedad, por lo que se trabajó especialmente en la optimización para búsquedas por palabras clave relacionadas con inmuebles y ubicaciones específicas.",
+    tecnologias: ["JavaScript", "Next.js", "TypeScript", "SEO"],
+    imagenes: ["/assets/propiedadSN.png"],
+    enlaces: { demo: "https://venta-propiedad1.vercel.app/" },
+  },
+
+  {
+    titulo: "Rifa para Influencer",
+    duracion: "11/08/2023 - 18/08/2023",
+    rol: "Desarrollador Backend",
+    descripcion:
+      "Sistema web desarrollado para automatizar la gestión de sorteos de un influencer, reemplazando un método manual de administración. La plataforma permite a los usuarios comprar uno o múltiples números mediante pagos integrados con Mercado Pago, mientras que el administrador puede gestionar participantes, realizar sorteos automáticamente, visualizar toda la información del ganador y repetir los sorteos las veces que sea necesario desde un panel de control.",
+    tecnologias: [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "Sequelize",
+      "Mercado Pago API",
+    ],
+    imagenes: ["/assets/sorteo.png"],
+    enlaces: {
+      github: "https://github.com/Albertososa753/sorteoProduccionBack",
+    },
+  },
+  {
+    titulo: "Aplicación de Ventas",
+    duracion: "19/12/2023 - 26/12/2023",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Aplicación Angular empresarial que permite gestionar perfiles de vendedores, optimizando la administración operativa.",
+    tecnologias: ["TypeScript", "Angular", "Angular Material", "Java"],
+    imagenes: [
+      "/assets/EIVSoftware/s1.png",
+      "/assets/EIVSoftware/s2.png",
+      "/assets/EIVSoftware/s3.png",
+      "/assets/EIVSoftware/s4.png",
+    ],
+    enlaces: {
+      github: "https://github.com/Albertososa753/clientEIVSoftware.git",
+    },
+  },
+  {
+    titulo: "Proyecto ABP",
+    duracion: "01/09/2023 - 16/09/2023",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Plataforma para gestionar viajes y pasajeros desarrollada en Angular y .NET, como parte de un desafío técnico laboral.",
+    tecnologias: [
+      "C#",
+      ".NET Entity Framework",
+      "JavaScript",
+      "Angular",
+      "ABP Framework",
+      "Docker",
+    ],
+    imagenes: [
+      "/assets/proyectoABP/a1.png",
+      "/assets/proyectoABP/a2.png",
+      "/assets/proyectoABP/a3.png",
+      "/assets/proyectoABP/a4.png",
+      "/assets/proyectoABP/a5.png",
+      "/assets/proyectoABP/a6.png",
+      "/assets/proyectoABP/a7.png",
+      "/assets/proyectoABP/a8.png",
+      "/assets/proyectoABP/a9.png",
+      "/assets/proyectoABP/a10.png",
+    ],
+    enlaces: { github: "https://github.com/Albertososa753/ProyectoABP" },
+  },
+  {
+    titulo: "Portfolio Personal",
+    duracion: "2023",
+    rol: "Desarrollador Frontend",
+    descripcion:
+      "Sitio personal construido con React, que incluye secciones interactivas y animaciones personalizadas.",
+    tecnologias: [
+      "JavaScript",
+      "React",
+      "Framer Motion",
+      "EmailJS",
+      "CSS Modules",
+    ],
+    imagenes: ["/assets/Portfolio/p.png"],
+    enlaces: { demo: "https://porfolio-alberto-sosa.vercel.app/" },
+  },
+  {
+    titulo: "CEIBO DIGITAL",
+    duracion: "11/07/2023 - 04/08/2023",
+    rol: "Desarrollador en equipo",
+    descripcion:
+      "Aplicación web empresarial desarrollada durante una pasantía en colaboración con un equipo de trabajo, a partir de los requerimientos de una empresa cliente. El sistema fue diseñado para gestionar novedades, informes y contenido interno de manera organizada, facilitando la administración de información y optimizando los procesos de comunicación dentro de la organización.",
+    tecnologias: [
+      "JavaScript",
+      "React",
+      "Redux",
+      "JWT",
+      "Vite",
+      "NextUI",
+      "Express",
+      "MongoDB",
+    ],
+    imagenes: [
+      "/assets/CeiboDigital/c1.png",
+      "/assets/CeiboDigital/c2.png",
+      "/assets/CeiboDigital/c3.png",
+      "/assets/CeiboDigital/c4.png",
+      "/assets/CeiboDigital/c5.png",
+      "/assets/CeiboDigital/c6.png",
+      "/assets/CeiboDigital/c7.png",
+      "/assets/CeiboDigital/c8.png",
+      "/assets/CeiboDigital/c9.png",
+      "/assets/CeiboDigital/c10.png",
+      "/assets/CeiboDigital/c11.png",
+    ],
+    enlaces: { github: "#" },
+  },
+  {
+    titulo: "Ropita ECommerce",
+    duracion: "27/06/2023 - 07/07/2023",
+    rol: "Desarrollador en equipo",
+    descripcion:
+      "E-commerce para ropa con búsqueda avanzada y gestión de usuarios, construido con React y Node.js.",
+    tecnologias: [
+      "JavaScript",
+      "React",
+      "React-Redux",
+      "Node.js",
+      "Express",
+      "Sequelize",
+    ],
+    imagenes: [
+      "/assets/ECommerce/e1.png",
+      "/assets/ECommerce/e2.png",
+      "/assets/ECommerce/e3.png",
+      "/assets/ECommerce/e4.png",
+      "/assets/ECommerce/e5.png",
+      "/assets/ECommerce/e6.png",
+    ],
+    enlaces: { github: "https://github.com/Albertososa753/Ropita-ECommerce" },
+  },
+  {
+    titulo: "TMDB Movie Search",
+    duracion: "16/06/2023 - 23/06/2023",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Aplicación para buscar películas utilizando la API de TMDB, con autenticación y gestión de usuarios.",
+    tecnologias: [
+      "JavaScript",
+      "React",
+      "React-Redux",
+      "NextUI",
+      "Node.js",
+      "Express",
+      "Sequelize",
+    ],
+    imagenes: [
+      "/assets/TMDB/t1.png",
+      "/assets/TMDB/t2.png",
+      "/assets/TMDB/t3.png",
+      "/assets/TMDB/t4.png",
+      "/assets/TMDB/t5.png",
+    ],
+    enlaces: { github: "https://github.com/Albertososa753/TMDB" },
+  },
+];

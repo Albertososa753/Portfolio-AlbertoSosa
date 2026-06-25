@@ -16,8 +16,10 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  margin: 6rem auto;
-  padding: 4rem 2rem;
+  margin:  auto;
+  background: transparent;
+
+  padding: 2rem 2rem;
   color: var(--text-primary);
   overflow: hidden;
 }
@@ -25,6 +27,7 @@
 /* Efectos de fondo */
 .contact-background {
   position: absolute;
+  
   top: 0;
   left: 0;
   right: 0;
@@ -100,6 +103,8 @@
   text-align: center;
   margin-bottom: 4rem;
   margin-left: 1.1rem;
+  margin-top: -2rem;
+
   margin-right: 1.1rem;
 }
 
@@ -128,12 +133,7 @@
   left: -10px;
   right: -10px;
   bottom: -10px;
-  background: linear-gradient(
-    45deg,
-    var(--primary-color),
-    var(--accent-color),
-    var(--secondary-color)
-  );
+  
   background-size: 200% 200%;
   border-radius: 10px;
   filter: blur(20px);
@@ -514,7 +514,7 @@
 @media (max-width: 768px) {
   .contact-section {
     padding: 2rem 1rem;
-    margin: 4rem auto;
+    margin:  auto;
   }
 
   .section-title {
