@@ -3,6 +3,43 @@ import type { Project } from "../types/project";
 // Lista de proyectos con múltiples imágenes / videos.
 export const proyectos: Project[] = [
   {
+    titulo: "Caful Lomos",
+    duracion: "01/08/2026 - 31/08/2026",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Plataforma web de juego y premios donde el usuario juega una partida cronometrada de destreza y gana un premio al alcanzar un umbral de puntaje dentro de la misma partida. Backend construido con NestJS, Prisma y PostgreSQL, garantizando que la elección de premio, el uso de tiradas y la acreditación de pagos sean operaciones transaccionales y seguras ante concurrencia. Integración con Mercado Pago para la compra de tiradas adicionales, con manejo idempotente de notificaciones para evitar pagos duplicados. Frontend desarrollado en Next.js, con el motor de juego (Kaplay) integrado mediante carga diferida en el cliente para evitar conflictos con el renderizado en servidor. Desarrollado bajo metodología Specification-Driven Development (SDD), documentando especificaciones antes de implementar cada funcionalidad.",
+    tecnologias: [
+      "TypeScript",
+      "Next.js",
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "Kaplay",
+      "Mercado Pago API",
+    ],
+    imagenes: ["/assets/caful.png"],
+    enlaces: { demo: "https://cafulomos.com" },
+  },
+
+  {
+    titulo: "Chau Panico",
+    duracion: "01/05/2026 - 30/06/2026",
+    rol: "Desarrollador Individual",
+    descripcion:
+      "Experiencia interactiva de apoyo para personas que atraviesan ataques de pánico, combinando mecánicas de juego con ejercicios de respiración guiada. Desarrollada con el motor de juego Kaplay y Vite, empaquetada como aplicación Android nativa mediante Capacitor. Suma una experiencia auditiva con frases habladas que acompañan al usuario durante toda la sesión, reforzando la sensación de contención. Incluye una mecánica de interacción por gestos (swipe) con estética pixel art y efectos de partículas orientados a generar calma y bajo estrés visual, un flujo de introducción con respiración guiada y un menú de soporte con información educativa sobre crisis de pánico. Rendimiento gráfico optimizado para dispositivos móviles, priorizando fluidez y estabilidad visual de las animaciones.",
+    tecnologias: [
+      "JavaScript",
+      "TypeScript",
+      "Kaplay",
+      "Vite",
+      "Capacitor",
+      "Pixel Art",
+      "Audio",
+    ],
+    imagenes: ["/assets/chaupanico.png"],
+    enlaces: { demo: "https://chaupanicos.com" },
+  },
+  {
     titulo: "QrClick",
     duracion: "02/01/2026 - 31/03/2026",
     rol: "Desarrollador Individual",

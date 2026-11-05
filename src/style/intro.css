@@ -20,9 +20,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-primary) 100%, var(--bg-secondary) 100%, var(--bg-tertiary) 100%);
-
-
+  /* Fondo transparente: deja ver el background animado global (partículas + orbes)
+     para mantener una sola atmósfera visual continua en toda la página. */
+  background: transparent;
 }
 
 .particle-canvas {

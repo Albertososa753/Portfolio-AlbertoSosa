@@ -44,7 +44,7 @@ export default function Contact() {
                 Descarga mi CV completo para conocer más sobre mi experiencia profesional y habilidades técnicas.
               </p>
               <div className="cv-actions">
-                <a href="Cv - Alberto Sosa.pdf" download className="cv-button download">
+                <a href="Alberto_Sosa_CV.pdf" download className="cv-button download">
                   <Download size={20} />
                   <span>Descargar CV</span>
                   <div className="button-glow"></div>
